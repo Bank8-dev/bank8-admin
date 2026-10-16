@@ -34,8 +34,8 @@ graph TD
     M --> C[AdminContext — singleton app state]
     C --> S[AdminServices — six BFF ApiClients]
 
-    subgraph Via Sentin8:BFF — staff session cookie, tokens server-side
-        S --> RFW[GET /v1/admin/ui/{page} — RFW definitions]
+    subgraph SGlu75s1["Via Sentin8:BFF — staff session cookie, tokens server-side"]
+        S --> RFW["GET /v1/admin/ui/{page} — RFW definitions"]
         S --> LED[bank8-ledger admin data APIs]
         S --> PAY[bank8-payments admin data APIs]
         S --> F[bank8-fdx admin data APIs]

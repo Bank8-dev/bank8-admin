@@ -35,7 +35,7 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph Admin process (Flutter web)
+    subgraph SGxagl7s["Admin process (Flutter web)"]
         MAIN[main.dart — bootstrap + dark theme] --> CTX[AdminContext singleton]
         CTX --> SVC[AdminServices six BffApiClients]
         CTX --> AUTH[AuthProvider — staff session]
