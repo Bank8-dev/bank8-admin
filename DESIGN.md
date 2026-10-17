@@ -1,4 +1,4 @@
-# DESIGN.md: Bank8:Admin — Detailed Design Document
+# Bank8:Admin — Detailed Design Document
 
 Overview-level material lives in `README.md`; the business view lives in
 `BUSINESS.md`.
