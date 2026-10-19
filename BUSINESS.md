@@ -1,4 +1,4 @@
-# Bank8:Admin — Business Requirements & Functionality
+# Bank8:Admin - Business Requirements & Functionality
 
 > Audience: product owners, business analysts, and anyone evaluating what
 > Bank8:Admin **does for the business**. For architecture read `README.md`;
@@ -7,7 +7,7 @@
 ## 1. Business Purpose
 
 - Give bank staff **one console** for the entire vertical: ledger, payments,
-  and FDX administration, plus sentin8 service enablement and health —
+  and FDX administration, plus sentin8 service enablement and health -
   authored once, rendered from the services' own admin UI definitions.
 - Eliminate admin-code drift: when a service gains a capability, its admin
   surface appears in the console through the RFW contract without console
@@ -58,14 +58,14 @@ events in the owning services:
 | Service enablement toggle | `sentin8:sys:service:updated` → per-tenant vertical initialization |
 | DLQ republish | Ledger DLQ replay event |
 
-**Inbound (consumed):** none — the console is request/response only; lists
+**Inbound (consumed):** none - the console is request/response only; lists
 refresh on page entry.
 
 ## 5. Business Rules & Invariants
 
 1. The console is staff-only; every capability is admin-scoped upstream and
    audited.
-2. The console carries no backend business knowledge — it renders service
+2. The console carries no backend business knowledge - it renders service
    definitions and calls service admin APIs.
 3. New admin surfaces ship with their service (RFW definition + scopes), not
    with console releases.
@@ -81,17 +81,17 @@ refresh on page entry.
 |---|---|
 | Bank operations staff | Day-to-day administration: monitors health, manages ledger/payment products and records, handles DLQ and decisions. |
 | Tenant administrator | Enables vertical services, oversees provider/recipients/consents, reads audit. |
-| Platform / vertical product owner | Ships new admin surfaces by publishing RFW definitions + admin scopes — no console release needed. |
+| Platform / vertical product owner | Ships new admin surfaces by publishing RFW definitions + admin scopes - no console release needed. |
 
 ## 7. KPIs / Success Criteria
 
-- **Reliability:** per-service isolation — one service's outage degrades only
+- **Reliability:** per-service isolation - one service's outage degrades only
   its own console sections.
 - **Latency:** admin lists and RFW pages render promptly (single proxy hop;
   definition caching except for parameterized pages).
 - **Security:** 100% of console mutations admin-scoped and audited upstream;
   zero staff authorization logic in the client.
-- **Maintainability:** zero per-service page code for RFW-rendered sections —
+- **Maintainability:** zero per-service page code for RFW-rendered sections -
   services ship capabilities without console changes.
 - **Coverage:** every ledger/payments/fdx admin capability reachable from one
   console URL.
@@ -128,7 +128,7 @@ refresh on page entry.
 ## 10. Open Business Questions
 
 - When do the placeholder sections (reconcile, csdf, dashboards) land as
-  full capabilities — via RFW definitions or dedicated admin APIs?
+  full capabilities - via RFW definitions or dedicated admin APIs?
 - Should cross-service workflows (operations spanning ledger + payments)
   get a purpose-built console view once correlated state is available?
 

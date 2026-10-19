@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 name: admin
-description: Bank8:Admin — Bank8 administration dashboard (staff-only, SSO with Dash). Flutter Web.
+description: Bank8:Admin - Bank8 administration dashboard (staff-only, SSO with Dash). Flutter Web.
 publish_to: "none"
 version: 0.1.0
 

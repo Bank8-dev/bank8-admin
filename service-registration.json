@@ -8,7 +8,7 @@
       "listing": {
         "app_name": "Bank8:Admin",
         "app_slug": "bank8-admin",
-        "description": "Bank8 administration dashboard — manage ledger products, accounts, postings, payments rules, FDX providers, and consents. Staff-only app — requires operator SSO.",
+        "description": "Bank8 administration dashboard - manage ledger products, accounts, postings, payments rules, FDX providers, and consents. Staff-only app - requires operator SSO.",
         "backend_url": "http://localhost:3008",
         "supports_dcr": true,
         "visibility": "public",

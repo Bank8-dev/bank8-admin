@@ -1,4 +1,4 @@
-# README.md: Bank8:Admin — Vertical Admin Console App
+# README.md: Bank8:Admin - Vertical Admin Console App
 
 > Third-party Sentin8:App application (staff-only). It uses the Sentin8
 > Flutter SDK (`sdk/flutter/sentin8`) as a published package. For wire-level
@@ -30,12 +30,12 @@ earns it.
 ```mermaid
 graph TD
     B[Staff browser] --> M[main.dart bootstrap]
-    M --> RC[fetchRuntimeContext — own origin, fail-closed]
-    M --> C[AdminContext — singleton app state]
-    C --> S[AdminServices — six BFF ApiClients]
+    M --> RC[fetchRuntimeContext - own origin, fail-closed]
+    M --> C[AdminContext - singleton app state]
+    C --> S[AdminServices - six BFF ApiClients]
 
-    subgraph SGlu75s1["Via Sentin8:BFF — staff session cookie, tokens server-side"]
-        S --> RFW["GET /v1/admin/ui/{page} — RFW definitions"]
+    subgraph SGlu75s1["Via Sentin8:BFF - staff session cookie, tokens server-side"]
+        S --> RFW["GET /v1/admin/ui/{page} - RFW definitions"]
         S --> LED[bank8-ledger admin data APIs]
         S --> PAY[bank8-payments admin data APIs]
         S --> F[bank8-fdx admin data APIs]
@@ -48,22 +48,22 @@ graph TD
 
 Components:
 
-- **Bootstrap** — `fetchRuntimeContext()` (SDK) from the app's own origin;
+- **Bootstrap** - `fetchRuntimeContext()` (SDK) from the app's own origin;
   failure renders the inline error page (fail closed), never a degraded
   console.
-- **`AdminContext`** (`app_context.dart`) — the app's singleton state holder
+- **`AdminContext`** (`app_context.dart`) - the app's singleton state holder
   (runtime context + auth + services).
-- **`AdminServices`** (`services.dart`) — six BFF proxy clients: `ledger`,
+- **`AdminServices`** (`services.dart`) - six BFF proxy clients: `ledger`,
   `payments`, `fdx`, `db`, `storage`, `post`.
-- **RFW host** (`rfw/rfw_page.dart`) — thin wrapper over the SDK's shared
+- **RFW host** (`rfw/rfw_page.dart`) - thin wrapper over the SDK's shared
   `Sentin8RfwPage`: fetches `GET /proxy/{service}/v1/admin/ui/{page}`, parses
   the RFW definition, renders it, and submits forms back through the BFF
   (`POST /proxy/{service}/v1/admin/{resource}` aliases); supports `extraProps`
   parameterized pages (skipping the RFW definition cache).
-- **Shell** (`admin_shell.dart`) — hash routing with an expandable sidebar
+- **Shell** (`admin_shell.dart`) - hash routing with an expandable sidebar
   tree; dispatches overview/settings pages and routes `/ledger/…`,
   `/payments/…`, `/fdx/…` to the RFW/host-written section pages.
-- **Hand-written section pages** — ledger/payments/fdx section pages over the
+- **Hand-written section pages** - ledger/payments/fdx section pages over the
   same admin data APIs (list + form patterns).
 
 ## 4. Key Traits and Data Structures
@@ -71,7 +71,7 @@ Components:
 - **`AdminContext` singleton**: one console instance per browser session;
   the singleton makes the shell's sidebar/state dispatch trivial and matches
   the single-window staff console reality.
-- **`Bank8RfwPage`**: the service→RFW bridge — maps a logical service name to
+- **`Bank8RfwPage`**: the service→RFW bridge - maps a logical service name to
   the right BFF client and delegates definition fetch/render/submit to the
   SDK renderer; the app owns no RFW schema itself.
 - **Section dispatch pattern** (`LedgerSectionPage` / `PaymentsSectionPage` /
@@ -95,7 +95,7 @@ Components:
   fully-RFW console (no home for platform-level glue pages like health and
   enablement).
 - **POST-only mutation contract.** The RFW renderer supports POST; update and
-  delete surface as POST alias routes on the services — the console follows
+  delete surface as POST alias routes on the services - the console follows
   that contract rather than inventing its own.
 - **Singleton context over inherited-only.** An ops console is one window,
   one session, one user; the singleton removes provider-plumbing noise from
@@ -125,7 +125,7 @@ Components:
     mutation rides the service's admin data API and its admin-scope gate
     (`bank8:ledger:*`, `bank8:payments:*`, `bank8:fdx:*` admin scopes).
   - The console never embeds backend knowledge: no table names, no vertical
-    business rules in page code — page code renders definitions and list
+    business rules in page code - page code renders definitions and list
     APIs.
   - Staff scope manifest is the only surface contract; adding an admin page
     needs a scope, not client code.

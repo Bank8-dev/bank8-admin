@@ -1,4 +1,4 @@
-# Bank8:Admin — Detailed Design Document
+# Bank8:Admin - Detailed Design Document
 
 Overview-level material lives in `README.md`; the business view lives in
 `BUSINESS.md`.
@@ -13,7 +13,7 @@ the listing manifest (`app8-listing.json`, mirrored in `app.json`).
 
 **What Admin does NOT own (delegates):** staff identity (Sentin8:Auth);
 session/token custody and scope gating (Sentin8:BFF); admin UX definitions
-and their data APIs (each backend service — ledger, payments, fdx);
+and their data APIs (each backend service - ledger, payments, fdx);
 service enablement state (Sentin8:Sys); persistence (Sentin8:DB via BFF);
 policy decisions (Shield inside each service).
 
@@ -36,11 +36,11 @@ graph TD
 ```mermaid
 graph TD
     subgraph SGxagl7s["Admin process (Flutter web)"]
-        MAIN[main.dart — bootstrap + dark theme] --> CTX[AdminContext singleton]
+        MAIN[main.dart - bootstrap + dark theme] --> CTX[AdminContext singleton]
         CTX --> SVC[AdminServices six BffApiClients]
-        CTX --> AUTH[AuthProvider — staff session]
-        SHELL[admin_shell — hash router + expandable sidebar] --> OV[OverviewPage — health cards]
-        SHELL --> SET[SettingsPage — sentin8 service enablement]
+        CTX --> AUTH[AuthProvider - staff session]
+        SHELL[admin_shell - hash router + expandable sidebar] --> OV[OverviewPage - health cards]
+        SHELL --> SET[SettingsPage - sentin8 service enablement]
         SHELL --> SECT[Ledger / Payments / Fdx section pages]
         SHELL --> RFWDISPATCH[RFW fall-through for service admin routes]
         RFWDISPATCH --> RFW[Bank8RfwPage → Sentin8RfwPage SDK renderer]
@@ -70,7 +70,7 @@ sequenceDiagram
     R->>F: POST /proxy/bank8-ledger/v1/admin/{resource}
     F->>L: POST /v1/admin/{resource} (Bearer staff token)
     L-->>U: result + refreshed data (audited upstream)
-    note over F,L: non-staff or scope-gap = 403 from the service — console renders the error, never bypasses
+    note over F,L: non-staff or scope-gap = 403 from the service - console renders the error, never bypasses
 ```
 
 Request lifecycle (service enablement):
@@ -94,7 +94,7 @@ sequenceDiagram
 
 ## 3. Data Model
 
-Admin persists **no tables of its own** — it renders service-owned admin
+Admin persists **no tables of its own** - it renders service-owned admin
 state:
 
 | Domain object | Owned by | Admin access |
@@ -129,11 +129,11 @@ read+write, jobs read/admin, DLQ read/republish, balances read, audit read,
 customers write); payments (instructions, payments, logics,
 payment-instruments, account-links, rules + rules publish, parameters, files,
 manual-decisions, admin, integrations, cores, cards, mandates,
-membership-directories, templates, calendars, dashboards — each read/write);
-fdx (consents, recipient, provider — read/write); platform (`db:data:read/
+membership-directories, templates, calendars, dashboards - each read/write);
+fdx (consents, recipient, provider - read/write); platform (`db:data:read/
 write`, `storage:env:read/write`). Grants `authorization_code` +
 `refresh_token`; `auth_mode: staff`. The console's authority is expressed
-through vertical admin scopes only — no platform-wide admin scope is carried
+through vertical admin scopes only - no platform-wide admin scope is carried
 (or needed).
 
 Event flow Admin participates in:
@@ -162,7 +162,7 @@ flowchart LR
   by service contract.
 - **TLS.** All traffic `https://`.
 - **UI contract.** RFW renderer supports POST; service update/delete routes
-  are POST aliases — the console never issues PUT/DELETE to admin data
+  are POST aliases - the console never issues PUT/DELETE to admin data
   resources.
 
 ## 6. Failure Modes & Recovery
@@ -186,7 +186,7 @@ flowchart LR
 ## 8. Invariants, Insecure-Defaults Rejected, Unsafe Rationale
 
 - The console owns no business logic: no table names, no ledger/payment
-  semantics beyond labels — definitions and data come from the services.
+  semantics beyond labels - definitions and data come from the services.
 - Staff-only at every layer; no customer journey exists in this app.
 - No token in the client; fail-closed bootstrap; no direct DB/storage/config
   access (CI guards across `lib/`).
