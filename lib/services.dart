@@ -50,7 +50,7 @@ class AdminServices {
     return AdminServices._(
       ledger: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-ledger', csrfToken: csrfToken, correlationId: correlationId),
       payments: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-payments', csrfToken: csrfToken, correlationId: correlationId),
-      fdx: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-fdx', csrfToken: csrfToken, correlationId: correlationId),
+      fdx: BffApiClient(bffBaseUrl: base, serviceName: 'openfin8-ca', csrfToken: csrfToken, correlationId: correlationId),
       reporting: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-reporting', csrfToken: csrfToken, correlationId: correlationId),
       risk: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-risk', csrfToken: csrfToken, correlationId: correlationId),
       compliance: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-compliance', csrfToken: csrfToken, correlationId: correlationId),
