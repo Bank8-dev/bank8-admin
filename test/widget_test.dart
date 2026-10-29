@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Admin widget test — app root smoke test.
+// Admin widget test - app root smoke test.
 //
 // AdminApp bootstraps via `fetchRuntimeContext` (a network call on
 // web.window.location.origin), so pumping the full app in a test would

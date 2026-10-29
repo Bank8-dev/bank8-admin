@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin app context — central runtime state
+// Bank8:Admin app context - central runtime state
 //
 // Holds the AppRuntimeContext, AuthProvider, and AdminServices.
 // Provides them to the widget tree via InheritedWidget.
@@ -17,7 +17,7 @@ import 'services.dart';
 
 /// Central app context that ties together runtime context, auth, and services.
 class AdminContext extends ChangeNotifier {
-  /// Singleton instance — accessible from anywhere (like Dash's AuthProvider.instance).
+  /// Singleton instance - accessible from anywhere (like Dash's AuthProvider.instance).
   static AdminContext? instance;
 
   final AppRuntimeContext runtimeContext;

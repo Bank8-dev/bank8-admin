@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin Payments pages — instructions, rules, cards, files, integrations, decisions, etc.
+// Bank8:Admin Payments pages - instructions, rules, cards, files, integrations, decisions, etc.
 //
 // All API calls go through BffApiClient: {bff}/proxy/payments/v1/*
 // Uses AdminContext.instance!.services!.payments for API access.
@@ -22,7 +22,7 @@ class PaymentsOverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return _PageScaffold(
       title: 'Payments',
-      subtitle: 'Payment orchestration — instructions, rules, cards, files, integrations, decisions.',
+      subtitle: 'Payment orchestration - instructions, rules, cards, files, integrations, decisions.',
       child: Wrap(
         spacing: 12,
         runSpacing: 12,
@@ -121,7 +121,7 @@ class _PaymentsListPageState extends State<_PaymentsListPage> {
               return Card(child: ListTile(
                 leading: Icon(widget.icon, color: Sentin8Colors.primary),
                 title: Text(id),
-                subtitle: Text(subtitle.isEmpty ? '—' : subtitle),
+                subtitle: Text(subtitle.isEmpty ? ' - ' : subtitle),
               ));
             })),
         ],

@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin shell — main scaffold with sidebar navigation
+// Bank8:Admin shell - main scaffold with sidebar navigation
 //
 // Hash-based routing: #/ledger/products, #/payments/rules, #/fdx/provider, etc.
 // Sidebar shows: Overview, Ledger (expandable), Payments (expandable), FDX (expandable).
@@ -111,7 +111,7 @@ class _SignInPage extends StatelessWidget {
               label: const Text('Staff Sign In'),
             ),
             const SizedBox(height: 16),
-            const Text('Staff access only — SSO with Sentin8:Dash', style: Sentin8Text.labelSmall),
+            const Text('Staff access only - SSO with Sentin8:Dash', style: Sentin8Text.labelSmall),
           ],
         ),
       ),
@@ -249,7 +249,7 @@ class _ExpansionNavItemState extends State<_ExpansionNavItem> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Header — uses InkWell for reliable CanvasKit click handling.
+        // Header - uses InkWell for reliable CanvasKit click handling.
         InkWell(
           onTap: () => setState(() => _expanded = !_expanded),
           child: Padding(
@@ -265,7 +265,7 @@ class _ExpansionNavItemState extends State<_ExpansionNavItem> {
             ),
           ),
         ),
-        // Children — shown when expanded.
+        // Children - shown when expanded.
         if (_expanded)
           for (final child in widget.item.children!)
             InkWell(
@@ -298,10 +298,10 @@ class _PageContent extends StatelessWidget {
       return const OverviewPage();
     }
 
-    // Settings route — keep the hand-written settings page.
+    // Settings route - keep the hand-written settings page.
     if (route == '/settings') return const SettingsPage();
 
-    // Bank8 service routes — render via RFW.
+    // Bank8 service routes - render via RFW.
     for (final service in ['ledger', 'payments', 'fdx', 'reporting', 'risk', 'compliance']) {
       final prefix = '/$service';
       if (route == prefix) {

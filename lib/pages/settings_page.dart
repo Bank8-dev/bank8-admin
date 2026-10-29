@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin Settings page — service enablement toggles.
+// Bank8:Admin Settings page - service enablement toggles.
 //
 // Enables/disables ledger, payments, and fdx services via the Sentin8:Sys
 // API (PUT /v1/env/{env_id}/services). Uses the admin app's

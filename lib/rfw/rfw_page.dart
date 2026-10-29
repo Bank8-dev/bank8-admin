@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin RFW page — thin wrapper around the shared Sentin8RfwPage.
+// Bank8:Admin RFW page - thin wrapper around the shared Sentin8RfwPage.
 //
 // Delegates to sentin8's Sentin8RfwPage which handles fetching, rendering,
 // and form submission for remote admin UI pages. The only app-specific
@@ -16,7 +16,7 @@ import 'package:sentin8/sentin8.dart';
 import '../app_context.dart';
 import '../services.dart';
 
-/// Bank8:Admin RFW page — renders a remote admin UI page for a bank8 service.
+/// Bank8:Admin RFW page - renders a remote admin UI page for a bank8 service.
 class Bank8RfwPage extends StatelessWidget {
   final String service;
   final String page;
@@ -87,7 +87,7 @@ class Bank8RfwPage extends StatelessWidget {
   }
 }
 
-/// Simple error boundary — catches render errors and shows a message.
+/// Simple error boundary - catches render errors and shows a message.
 class ErrorBoundary extends StatelessWidget {
   final Widget child;
   const ErrorBoundary({super.key, required this.child});

@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin FDX pages — provider settings, recipients, consents, CSDF, settings.
+// Bank8:Admin FDX pages - provider settings, recipients, consents, CSDF, settings.
 //
 // All API calls go through BffApiClient: {bff}/proxy/fdx/v1/*
 // Uses AdminContext.instance!.services!.fdx for API access.
@@ -22,7 +22,7 @@ class FdxOverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return _PageScaffold(
       title: 'FDX',
-      subtitle: 'Financial Data Exchange — provider settings, recipients, consents, CSDF.',
+      subtitle: 'Financial Data Exchange - provider settings, recipients, consents, CSDF.',
       child: Wrap(
         spacing: 12,
         runSpacing: 12,
@@ -160,7 +160,7 @@ class _FdxRecipientsPageState extends State<_FdxRecipientsPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.group, color: Sentin8Colors.primary),
                 title: Text(r['name'] as String? ?? 'Unknown'),
-                subtitle: Text(r['client_id'] as String? ?? '—'),
+                subtitle: Text(r['client_id'] as String? ?? ' - '),
               ));
             })),
         ],
@@ -215,7 +215,7 @@ class _FdxConsentsPageState extends State<_FdxConsentsPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.lock, color: Sentin8Colors.primary),
                 title: Text(co['id'] as String? ?? 'Unknown'),
-                subtitle: Text('${co['recipient_id'] ?? '—'} • ${co['status'] ?? ''}'),
+                subtitle: Text('${co['recipient_id'] ?? ' - '} • ${co['status'] ?? ''}'),
                 trailing: Text(co['scope'] as String? ?? ''),
               ));
             })),

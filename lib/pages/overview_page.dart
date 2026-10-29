@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin overview page — dashboard with service health cards
+// Bank8:Admin overview page - dashboard with service health cards
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../theme.dart';

@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin Ledger pages — product catalog, accounts, postings, schedules, DLQ, balances, audit, settings.
+// Bank8:Admin Ledger pages - product catalog, accounts, postings, schedules, DLQ, balances, audit, settings.
 //
 // All API calls go through BffApiClient: {bff}/proxy/ledger/v1/*
 // Uses AdminContext.instance!.services!.ledger for API access.
@@ -23,7 +23,7 @@ class LedgerOverviewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return _PageScaffold(
       title: 'Ledger',
-      subtitle: 'Double-entry ledger — product catalog, accounts, posting console, schedules, DLQ, reconciliation.',
+      subtitle: 'Double-entry ledger - product catalog, accounts, posting console, schedules, DLQ, reconciliation.',
       child: Wrap(
         spacing: 12,
         runSpacing: 12,
@@ -57,7 +57,7 @@ class LedgerSectionPage extends StatelessWidget {
       'products' => const LedgerProductsPage(),
       'schedules' => const LedgerSchedulesPage(),
       'dlq' => const LedgerDlqPage(),
-      'reconcile' => const _PlaceholderPage(title: 'Reconciliation', message: 'Reconciliation dashboard — match/mismatch summary.'),
+      'reconcile' => const _PlaceholderPage(title: 'Reconciliation', message: 'Reconciliation dashboard - match/mismatch summary.'),
       'balances' => const LedgerBalancesPage(),
       'customers' => const LedgerCustomersPage(),
       'audit' => const LedgerAuditPage(),
@@ -163,7 +163,7 @@ class _LedgerProductsPageState extends State<LedgerProductsPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.inventory_2, color: Sentin8Colors.primary),
                 title: Text(p['name'] as String? ?? 'Unknown'),
-                subtitle: Text('${p['product_type'] ?? '—'} • ${p['id'] ?? ''}'),
+                subtitle: Text('${p['product_type'] ?? ' - '} • ${p['id'] ?? ''}'),
                 trailing: Text(p['status'] as String? ?? 'active'),
               ));
             })),
@@ -218,7 +218,7 @@ class _LedgerAccountsPageState extends State<LedgerAccountsPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.account_balance, color: Sentin8Colors.primary),
                 title: Text(a['id'] as String? ?? 'Unknown'),
-                subtitle: Text('${a['account_type'] ?? '—'} • ${a['denomination'] ?? 'CAD'}'),
+                subtitle: Text('${a['account_type'] ?? ' - '} • ${a['denomination'] ?? 'CAD'}'),
                 trailing: Text(a['status'] as String? ?? 'active'),
               ));
             })),
@@ -273,7 +273,7 @@ class _LedgerPostingsPageState extends State<LedgerPostingsPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.receipt_long, color: Sentin8Colors.primary),
                 title: Text(p['id'] as String? ?? 'Unknown'),
-                subtitle: Text('${p['description'] ?? '—'} • ${p['amount'] ?? ''}'),
+                subtitle: Text('${p['description'] ?? ' - '} • ${p['amount'] ?? ''}'),
                 trailing: Text(p['phase'] as String? ?? ''),
               ));
             })),
@@ -328,7 +328,7 @@ class _LedgerSchedulesPageState extends State<LedgerSchedulesPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.schedule, color: Sentin8Colors.primary),
                 title: Text(s['name'] as String? ?? 'Unknown'),
-                subtitle: Text(s['cron'] as String? ?? '—'),
+                subtitle: Text(s['cron'] as String? ?? ' - '),
               ));
             })),
         ],
@@ -382,7 +382,7 @@ class _LedgerDlqPageState extends State<LedgerDlqPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.error_outline, color: Colors.red),
                 title: Text(e['id'] as String? ?? 'Unknown'),
-                subtitle: Text(e['error'] as String? ?? '—'),
+                subtitle: Text(e['error'] as String? ?? ' - '),
                 trailing: Text(e['status'] as String? ?? ''),
               ));
             })),
@@ -436,8 +436,8 @@ class _LedgerBalancesPageState extends State<LedgerBalancesPage> {
               final b = _balances![i] as Map<String, dynamic>;
               return Card(child: ListTile(
                 leading: const Icon(Icons.bar_chart, color: Sentin8Colors.primary),
-                title: Text('${b['account_id'] ?? '—'}'),
-                subtitle: Text('${b['amount'] ?? '—'} ${b['denomination'] ?? ''}'),
+                title: Text('${b['account_id'] ?? ' - '}'),
+                subtitle: Text('${b['amount'] ?? ' - '} ${b['denomination'] ?? ''}'),
                 trailing: Text(b['phase'] as String? ?? ''),
               ));
             })),
@@ -492,7 +492,7 @@ class _LedgerCustomersPageState extends State<LedgerCustomersPage> {
               return Card(child: ListTile(
                 leading: const Icon(Icons.people, color: Sentin8Colors.primary),
                 title: Text(cu['display_name'] as String? ?? 'Unknown'),
-                subtitle: Text(cu['email'] as String? ?? '—'),
+                subtitle: Text(cu['email'] as String? ?? ' - '),
                 trailing: Text(cu['id'] as String? ?? ''),
               ));
             })),
@@ -546,7 +546,7 @@ class _LedgerAuditPageState extends State<LedgerAuditPage> {
               final e = _events![i] as Map<String, dynamic>;
               return Card(child: ListTile(
                 leading: const Icon(Icons.fact_check, color: Sentin8Colors.primary),
-                title: Text(e['action'] as String? ?? '—'),
+                title: Text(e['action'] as String? ?? ' - '),
                 subtitle: Text('${e['actor_user_id'] ?? ''} • ${e['timestamp'] ?? ''}'),
               ));
             })),

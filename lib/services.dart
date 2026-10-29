@@ -3,7 +3,7 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin services — BFF proxy access layer
+// Bank8:Admin services - BFF proxy access layer
 //
 // All API calls go through the BFF proxy: {bff}/proxy/{serviceName}{path}
 // The BffApiClient uses credentials: 'include' so the HttpOnly bff-session
