@@ -20,7 +20,9 @@ import 'package:sentin8/sentin8.dart';
 class AdminServices {
   final BffApiClient ledger;
   final BffApiClient payments;
-  final BffApiClient fdx;
+  /// Open banking rides OpenFin8 - the per-jurisdiction FDX provider
+  // surfaces are openfin8-ca/us/uk/eu (here: the Canada deployment).
+  final BffApiClient openBanking;
   final BffApiClient reporting;
   final BffApiClient risk;
   final BffApiClient compliance;
@@ -31,7 +33,7 @@ class AdminServices {
   AdminServices._({
     required this.ledger,
     required this.payments,
-    required this.fdx,
+    required this.openBanking,
     required this.reporting,
     required this.risk,
     required this.compliance,
@@ -50,7 +52,7 @@ class AdminServices {
     return AdminServices._(
       ledger: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-ledger', csrfToken: csrfToken, correlationId: correlationId),
       payments: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-payments', csrfToken: csrfToken, correlationId: correlationId),
-      fdx: BffApiClient(bffBaseUrl: base, serviceName: 'openfin8-ca', csrfToken: csrfToken, correlationId: correlationId),
+      openBanking: BffApiClient(bffBaseUrl: base, serviceName: 'openfin8-ca', csrfToken: csrfToken, correlationId: correlationId),
       reporting: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-reporting', csrfToken: csrfToken, correlationId: correlationId),
       risk: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-risk', csrfToken: csrfToken, correlationId: correlationId),
       compliance: BffApiClient(bffBaseUrl: base, serviceName: 'bank8-compliance', csrfToken: csrfToken, correlationId: correlationId),

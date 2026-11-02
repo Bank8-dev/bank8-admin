@@ -8,4 +8,4 @@ export 'admin_shell.dart';
 export 'overview_page.dart';
 export 'ledger/ledger_pages.dart';
 export 'payments/payments_pages.dart';
-export 'fdx/fdx_pages.dart';
+export 'open_banking/open_banking_pages.dart';

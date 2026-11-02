@@ -5,7 +5,7 @@
 
 // Bank8:Admin Settings page - service enablement toggles.
 //
-// Enables/disables ledger, payments, and fdx services via the Sentin8:Sys
+// Enables/disables ledger, payments, and open-banking services via the Sentin8:Sys
 // API (PUT /v1/env/{env_id}/services). Uses the admin app's
 // BffApiClient which routes through the BFF proxy.
 
@@ -28,7 +28,7 @@ class _SettingsPageState extends State<SettingsPage> {
   final _serviceLabels = <String, String>{
     'ledger': 'Ledger',
     'payments': 'Payments',
-    'fdx': 'FDX',
+    'openfin8-ca': 'Open Banking',
   };
 
   @override

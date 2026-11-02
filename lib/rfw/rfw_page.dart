@@ -73,8 +73,8 @@ class Bank8RfwPage extends StatelessWidget {
         return services.ledger;
       case 'payments':
         return services.payments;
-      case 'fdx':
-        return services.fdx;
+      case 'openfin8-ca':
+        return services.openBanking;
       case 'reporting':
         return services.reporting;
       case 'risk':

@@ -5,8 +5,8 @@
 
 // Bank8:Admin shell - main scaffold with sidebar navigation
 //
-// Hash-based routing: #/ledger/products, #/payments/rules, #/fdx/provider, etc.
-// Sidebar shows: Overview, Ledger (expandable), Payments (expandable), FDX (expandable).
+// Hash-based routing: #/ledger/products, #/payments/rules, #/open-banking/provider, etc.
+// Sidebar shows: Overview, Ledger (expandable), Payments (expandable), Open Banking (expandable).
 
 import 'package:flutter/material.dart';
 import 'dart:js_interop';
@@ -160,12 +160,12 @@ class _Sidebar extends StatelessWidget {
       _NavItem('Dashboards', Icons.dashboard_customize, '/payments/dashboards'),
       _NavItem('Settings', Icons.settings, '/payments/settings'),
     ]),
-    _NavItem('FDX', Icons.sync_alt, '/fdx', children: [
-      _NavItem('Provider', Icons.cloud, '/fdx/provider'),
-      _NavItem('Recipients', Icons.group, '/fdx/recipients'),
-      _NavItem('Consents', Icons.lock, '/fdx/consents'),
-      _NavItem('CSDF', Icons.data_object, '/fdx/csdf'),
-      _NavItem('Settings', Icons.settings, '/fdx/settings'),
+    _NavItem('Open Banking', Icons.sync_alt, '/open-banking', children: [
+      _NavItem('Provider', Icons.cloud, '/open-banking/provider'),
+      _NavItem('Recipients', Icons.group, '/open-banking/recipients'),
+      _NavItem('Consents', Icons.lock, '/open-banking/consents'),
+      _NavItem('CSDF', Icons.data_object, '/open-banking/csdf'),
+      _NavItem('Settings', Icons.settings, '/open-banking/settings'),
     ]),
     _NavItem('Reporting', Icons.description, '/reporting', children: [
       _NavItem('Calendar', Icons.calendar_month, '/reporting/calendar'),
@@ -302,7 +302,7 @@ class _PageContent extends StatelessWidget {
     if (route == '/settings') return const SettingsPage();
 
     // Bank8 service routes - render via RFW.
-    for (final service in ['ledger', 'payments', 'fdx', 'reporting', 'risk', 'compliance']) {
+    for (final service in ['ledger', 'payments', 'openfin8-ca', 'reporting', 'risk', 'compliance']) {
       final prefix = '/$service';
       if (route == prefix) {
         return Bank8RfwPage(service: service, page: 'overview', onNavigate: onNavigate);

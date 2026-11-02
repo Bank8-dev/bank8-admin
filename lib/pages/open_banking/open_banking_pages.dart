@@ -3,10 +3,11 @@
 // SPDX-FileCopyrightText: Copyright Contributors to the Bank8:Admin
 // SPDX-License-Identifier: Apache-2.0
 
-// Bank8:Admin FDX pages - provider settings, recipients, consents, CSDF, settings.
+// Bank8:Admin open-banking pages - provider settings, recipients, consents, CSDF, settings.
 //
-// All API calls go through BffApiClient: {bff}/proxy/fdx/v1/*
-// Uses AdminContext.instance!.services!.fdx for API access.
+// All API calls go through BffApiClient: {bff}/proxy/openfin8-ca/v1/*
+// (OpenFin8:CA - the open-banking vertical serving the FDX v6.5 wire).
+// Uses AdminContext.instance!.services!.openBanking for API access.
 
 import 'package:flutter/material.dart';
 import 'package:web/web.dart' as web;
@@ -15,23 +16,23 @@ import '../../app_context.dart';
 
 // ── Overview ────────────────────────────────────────────────────────────
 
-class FdxOverviewPage extends StatelessWidget {
-  const FdxOverviewPage({super.key});
+class OpenBankingOverviewPage extends StatelessWidget {
+  const OpenBankingOverviewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return _PageScaffold(
-      title: 'FDX',
-      subtitle: 'Financial Data Exchange - provider settings, recipients, consents, CSDF.',
+      title: 'Open Banking',
+      subtitle: 'Open banking (OpenFin8, FDX v6.5 wire) - provider settings, recipients, consents, CSDF.',
       child: Wrap(
         spacing: 12,
         runSpacing: 12,
         children: [
-          _NavChip(label: 'Provider', icon: Icons.cloud, route: '/fdx/provider'),
-          _NavChip(label: 'Recipients', icon: Icons.group, route: '/fdx/recipients'),
-          _NavChip(label: 'Consents', icon: Icons.lock, route: '/fdx/consents'),
-          _NavChip(label: 'CSDF', icon: Icons.data_object, route: '/fdx/csdf'),
-          _NavChip(label: 'Settings', icon: Icons.settings, route: '/fdx/settings'),
+          _NavChip(label: 'Provider', icon: Icons.cloud, route: '/open-banking/provider'),
+          _NavChip(label: 'Recipients', icon: Icons.group, route: '/open-banking/recipients'),
+          _NavChip(label: 'Consents', icon: Icons.lock, route: '/open-banking/consents'),
+          _NavChip(label: 'CSDF', icon: Icons.data_object, route: '/open-banking/csdf'),
+          _NavChip(label: 'Settings', icon: Icons.settings, route: '/open-banking/settings'),
         ],
       ),
     );
@@ -40,18 +41,18 @@ class FdxOverviewPage extends StatelessWidget {
 
 // ── Section Dispatch ────────────────────────────────────────────────────
 
-class FdxSectionPage extends StatelessWidget {
+class OpenBankingSectionPage extends StatelessWidget {
   final String section;
-  const FdxSectionPage({super.key, required this.section});
+  const OpenBankingSectionPage({super.key, required this.section});
 
   @override
   Widget build(BuildContext context) {
     return switch (section) {
-      'provider' => const _FdxProviderPage(),
-      'recipients' => const _FdxRecipientsPage(),
-      'consents' => const _FdxConsentsPage(),
+      'provider' => const _OpenBankingProviderPage(),
+      'recipients' => const _OpenBankingRecipientsPage(),
+      'consents' => const _OpenBankingConsentsPage(),
       'csdf' => const _PlaceholderPage(title: 'CSDF', message: 'Consent Synchronization Data Format settings.'),
-      'settings' => const _PlaceholderPage(title: 'FDX Settings', message: 'FDX configuration parameters.'),
+      'settings' => const _PlaceholderPage(title: 'Open Banking Settings', message: 'Open-banking configuration parameters.'),
       _ => _PlaceholderPage(title: 'Unknown', message: 'Unknown section: $section'),
     };
   }
@@ -59,14 +60,14 @@ class FdxSectionPage extends StatelessWidget {
 
 // ── Provider ────────────────────────────────────────────────────────────
 
-class _FdxProviderPage extends StatefulWidget {
-  const _FdxProviderPage();
+class _OpenBankingProviderPage extends StatefulWidget {
+  const _OpenBankingProviderPage();
 
   @override
-  State<_FdxProviderPage> createState() => _FdxProviderPageState();
+  State<_OpenBankingProviderPage> createState() => _OpenBankingProviderPageState();
 }
 
-class _FdxProviderPageState extends State<_FdxProviderPage> {
+class _OpenBankingProviderPageState extends State<_OpenBankingProviderPage> {
   Map<String, dynamic>? _profile;
   String? _error;
 
@@ -78,7 +79,7 @@ class _FdxProviderPageState extends State<_FdxProviderPage> {
 
   Future<void> _load() async {
     try {
-      final resp = await AdminContext.instance!.services!.fdx.get('/v1/provider/profile');
+      final resp = await AdminContext.instance!.services!.openBanking.get('/v1/provider/profile');
       if (mounted) setState(() => _profile = resp.data);
     } catch (e) {
       if (mounted) setState(() => _error = e.toString());
@@ -88,7 +89,7 @@ class _FdxProviderPageState extends State<_FdxProviderPage> {
   @override
   Widget build(BuildContext context) {
     return _PageScaffold(
-      title: 'FDX Provider',
+      title: 'Open Banking Provider',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -116,14 +117,14 @@ class _FdxProviderPageState extends State<_FdxProviderPage> {
 
 // ── Recipients ──────────────────────────────────────────────────────────
 
-class _FdxRecipientsPage extends StatefulWidget {
-  const _FdxRecipientsPage();
+class _OpenBankingRecipientsPage extends StatefulWidget {
+  const _OpenBankingRecipientsPage();
 
   @override
-  State<_FdxRecipientsPage> createState() => _FdxRecipientsPageState();
+  State<_OpenBankingRecipientsPage> createState() => _OpenBankingRecipientsPageState();
 }
 
-class _FdxRecipientsPageState extends State<_FdxRecipientsPage> {
+class _OpenBankingRecipientsPageState extends State<_OpenBankingRecipientsPage> {
   List<dynamic>? _recipients;
   String? _error;
 
@@ -135,7 +136,7 @@ class _FdxRecipientsPageState extends State<_FdxRecipientsPage> {
 
   Future<void> _load() async {
     try {
-      final resp = await AdminContext.instance!.services!.fdx.get('/v1/recipient/providers');
+      final resp = await AdminContext.instance!.services!.openBanking.get('/v1/recipient/providers');
       if (mounted) setState(() => _recipients = (resp.data?['providers'] ?? resp.data?['data']) as List<dynamic>? ?? []);
     } catch (e) {
       if (mounted) setState(() => _error = e.toString());
@@ -145,7 +146,7 @@ class _FdxRecipientsPageState extends State<_FdxRecipientsPage> {
   @override
   Widget build(BuildContext context) {
     return _PageScaffold(
-      title: 'FDX Recipients',
+      title: 'Open Banking Recipients',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -171,14 +172,14 @@ class _FdxRecipientsPageState extends State<_FdxRecipientsPage> {
 
 // ── Consents ─────────────────────────────────────────────────────────────
 
-class _FdxConsentsPage extends StatefulWidget {
-  const _FdxConsentsPage();
+class _OpenBankingConsentsPage extends StatefulWidget {
+  const _OpenBankingConsentsPage();
 
   @override
-  State<_FdxConsentsPage> createState() => _FdxConsentsPageState();
+  State<_OpenBankingConsentsPage> createState() => _OpenBankingConsentsPageState();
 }
 
-class _FdxConsentsPageState extends State<_FdxConsentsPage> {
+class _OpenBankingConsentsPageState extends State<_OpenBankingConsentsPage> {
   List<dynamic>? _consents;
   String? _error;
 
@@ -190,7 +191,7 @@ class _FdxConsentsPageState extends State<_FdxConsentsPage> {
 
   Future<void> _load() async {
     try {
-      final resp = await AdminContext.instance!.services!.fdx.get('/v1/admin/consents');
+      final resp = await AdminContext.instance!.services!.openBanking.get('/v1/admin/consents');
       if (mounted) setState(() => _consents = (resp.data?['consents'] ?? resp.data?['data']) as List<dynamic>? ?? []);
     } catch (e) {
       if (mounted) setState(() => _error = e.toString());
@@ -200,7 +201,7 @@ class _FdxConsentsPageState extends State<_FdxConsentsPage> {
   @override
   Widget build(BuildContext context) {
     return _PageScaffold(
-      title: 'FDX Consents',
+      title: 'Open Banking Consents',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

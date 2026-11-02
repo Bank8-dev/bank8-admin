@@ -32,7 +32,7 @@ class _OverviewPageState extends State<OverviewPage> {
     for (final entry in {
       'ledger': ctx!.services!.ledger,
       'payments': ctx.services!.payments,
-      'fdx': ctx.services!.fdx,
+      'openfin8-ca': ctx.services!.openBanking,
       'reporting': ctx.services!.reporting,
       'risk': ctx.services!.risk,
       'compliance': ctx.services!.compliance,
