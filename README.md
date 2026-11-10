@@ -12,7 +12,7 @@
 ## 1. Summary
 
 Admin is the staff-only vertical admin console of the Bank8 vertical: it
-exposes the Bank8:Ledger, Bank8:Payments, and OpenFin8:CA admin surfaces
+exposes the Bank8:Ledger, Bank8:Payments, and OpenFin8 admin surfaces
 (ledger products/accounts/postings/schedules/DLQ/balances/customers/audit,
 payment instructions/rules/cards/files/decisions/mandates and more, FDX
 provider/recipients/consents) plus sentin8 service-enablement settings and a
@@ -43,7 +43,7 @@ graph TD
         S --> RFW["GET /v1/admin/ui/{page} - RFW definitions"]
         S --> LED[bank8-ledger admin data APIs]
         S --> PAY[bank8-payments admin data APIs]
-        S --> F[OpenFin8:CA admin data APIs]
+        S --> F[OpenFin8 admin data APIs]
         S --> SYS[Sentin8:Sys service enablement]
         S --> D[db]
         S --> ST[storage]

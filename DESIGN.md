@@ -24,7 +24,7 @@ graph TD
     BFF -->|RFW definitions| LED[bank8-ledger]
     BFF -->|admin data APIs| LED
     BFF -->|RFW + admin data| PAY[bank8-payments]
-    BFF -->|RFW + admin data| FDX[OpenFin8:CA<br/>(open banking)]
+    BFF -->|RFW + admin data| FDX["OpenFin8<br/>(open banking)"]
     BFF -->|service enablement| SYS[Sentin8:Sys]
     BFF --> DB[db]
     BFF --> STG[storage]
@@ -102,7 +102,7 @@ state:
 | RFW admin UI definitions | each service (`GET /v1/admin/ui/{page}`) | fetch + render + submit |
 | Ledger admin data (products, accounts, postings, schedules, DLQ, balances, customers, audit) | Bank8:Ledger | list/read (+ product create) via admin data APIs |
 | Payments admin data (instructions, rules, cards, files, integrations, manual-decisions, mandates, templates, calendars, dashboards) | Bank8:Payments | list/read via admin data APIs |
-| Open-banking admin data (provider profile, recipients, consents) | OpenFin8:CA | read via admin data APIs |
+| Open-banking admin data (provider profile, recipients, consents) | OpenFin8 | read via admin data APIs |
 | Service enablement | Sentin8:Sys | read + toggle per env |
 | Service health | each service `/v1/health` | read |
 

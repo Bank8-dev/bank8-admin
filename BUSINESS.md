@@ -21,7 +21,7 @@
 | Sentin8 service enablement per environment (view + toggle) | Sentin8:Sys |
 | Ledger administration: products (create), accounts, postings, schedules, DLQ, balances, customers, audit | Bank8:Ledger admin APIs + RFW |
 | Payments administration: instructions, rules, cards, files, integrations, manual decisions, mandates, templates, calendars, dashboards | Bank8:Payments admin APIs + RFW |
-| Open-banking administration: provider profile, recipients, consents | OpenFin8:CA admin APIs + RFW |
+| Open-banking administration: provider profile, recipients, consents | OpenFin8 admin APIs + RFW |
 | RFW-rendered service admin pages (fetch, render, submit) | platform RFW contract via BFF |
 
 **What Admin does NOT own (business boundary):**
@@ -30,7 +30,7 @@
 |---|---|
 | Staff identity and sign-in | Sentin8:Auth |
 | Session/token custody, scope gating | Sentin8:BFF |
-| Admin UX definitions and their business logic | Bank8:Ledger / Bank8:Payments / OpenFin8:CA |
+| Admin UX definitions and their business logic | Bank8:Ledger / Bank8:Payments / OpenFin8 |
 | Vertical service enablement state | Sentin8:Sys |
 | Structured persistence | Sentin8:DB |
 | Policy decisions | Shield within each service |
@@ -104,7 +104,7 @@ refresh on page entry.
 | Sentin8:BFF | Staff session, token attach, scope gating, proxy |
 | Bank8:Ledger | Ledger admin data + RFW definitions + health |
 | Bank8:Payments | Payments admin data + RFW definitions + health |
-| OpenFin8:CA | Open-banking admin data + RFW definitions + health |
+| OpenFin8 | Open-banking admin data + RFW definitions + health |
 | Sentin8:Sys | Service enablement per environment |
 | Sentin8:App | Instance provisioning, runtime context, listing |
 | Sentin8:TLS | Hostname → instance resolution, TLS termination |
