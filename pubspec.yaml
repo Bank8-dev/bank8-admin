@@ -6,7 +6,7 @@
 name: admin
 description: Bank8:Admin - Bank8 administration dashboard (staff-only, SSO with Dash). Flutter Web.
 publish_to: "none"
-version: 0.1.0
+version: 1.0.0
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
